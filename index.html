@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Video Access</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; padding: 50px; }
+    input[type="text"] { padding: 10px; width: 250px; font-size: 16px; }
+    button { padding: 10px 20px; font-size: 16px; margin-top: 10px; }
+    #message { margin-top: 20px; font-size: 18px; color: red; }
+    #video { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Enter Access Code</h1>
+  <input type="text" id="codeInput" placeholder="Enter your code here" />
+  <button onclick="verifyCode()">Access Video</button>
+  <div id="message"></div>
+  <div id="video" style="display: none;">
+    <p>Video Unlocked! Watch below:</p>
+    <iframe src="https://uwcrbc-my.sharepoint.com/personal/rbc24_iman_uwcrobertboschcollege_de/_layouts/15/embed.aspx?UniqueId=0a0d76ff-8540-4954-9342-7fe178a18fdd&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="Wars and conflict 2-20250719_172021-Meeting Recording.mp4" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    const validCodes = {
+      "CODE1": true,
+      "CODE2": true,
+      "CODE3": true,
+      "CODE4": true,
+      "CODE5": true,
+      "CODE6": true,
+      "CODE7": true,
+      "CODE8": true,
+      "CODE9": true,
+      "CODE10": true
+    };
+
+    function verifyCode() {
+      const input = document.getElementById("codeInput").value.trim();
+      const message = document.getElementById("message");
+      const video = document.getElementById("video");
+
+      if (validCodes[input]) {
+        message.innerText = "";
+        video.style.display = "block";
+        delete validCodes[input];
+      } else {
+        message.innerText = "Invalid or already used code.";
+        video.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
